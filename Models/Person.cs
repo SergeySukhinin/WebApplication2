@@ -35,11 +35,14 @@ namespace WebApplication2.Models
         [DateRangeValidatorAttribute("FromDate", ErrorMessage = "'FromDate' should be older or equal to 'ToDate'")]
         public DateTime? ToDate { get; set; }
 
+        //can receive multiple values from request that would be binded to a collection:
+        public List<string?> Tags { get; set; } = [];
 
         public override string ToString()
         {
             return $"Person object - Person name: {PersonName}, Email: {Email}, Phone: {Phone}," +
-                $"Password: {Password}, ConfirmPassword: {ConfirmPassword}, Price: {Price}";
+                $"Password: {Password}, ConfirmPassword: {ConfirmPassword}, Price: {Price}," +
+                $"DateOfBirth: {DateOfBirth}, FromDate: {FromDate}, ToDate: {ToDate}, Tags: {String.Join(", ", [.. Tags])}";
         }
     }
 }

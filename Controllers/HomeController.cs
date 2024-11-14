@@ -39,7 +39,7 @@ namespace WebApplication2.Controllers
         }
 
         [Route("register2")]
-        public IActionResult Index2([FromBody] PersonIValidateInterface personIValidateInterface)
+        public IActionResult Index2([FromBody] PersonIValidateInterface personIValidateInterface, [FromHeader(Name ="User-Agent")] string UserAgent)
         {
             if (!ModelState.IsValid)
             {
@@ -47,7 +47,7 @@ namespace WebApplication2.Controllers
                     ModelState.Values.SelectMany(value => value.Errors).Select(err => err.ErrorMessage));
                 return BadRequest(errors);
             }
-            return Content($"{personIValidateInterface}");
+            return Content($"{personIValidateInterface}. User-Agent: {UserAgent}");
         }
     }
 }
