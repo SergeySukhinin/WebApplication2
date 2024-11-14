@@ -11,7 +11,7 @@ namespace WebApplication2.Controllers
         // Example: public IActionResult Index([Bind(nameof(Person.PersonName), nameof(Person.Email), nameof(Person.ConfirmPassword))] Person person)
         // also can use [BindNever] in person attribute for excluding certain fields from model binding
         {
-            
+            /*
             List<string> errorsList = [];
             
             if (!ModelState.IsValid)
@@ -25,15 +25,15 @@ namespace WebApplication2.Controllers
                 }
                 string errors = string.Join("\n", errorsList);
                 return BadRequest(errors);
-            }
+            }*/
 
-            /* ANOTHER WAY 
+            /* ANOTHER WAY */
             if (!ModelState.IsValid)
             {
                 string errors = string.Join("\n", 
                     ModelState.Values.SelectMany(value => value.Errors).Select(err => err.ErrorMessage));
                 return BadRequest(errors);
-            }*/
+            }
 
             return Content($"{person}");
         }
