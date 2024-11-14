@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
         [Route("register")]
         public IActionResult Index(Person person)   // can use Bind for binding only certain parameters.
         // Example: public IActionResult Index([Bind(nameof(Person.PersonName), nameof(Person.Email), nameof(Person.ConfirmPassword))] Person person)
-        // also can use [BindNever] in person attribute for excluding certain fields from model binding
+        // also can use [BindNever] in a model attribute for excluding certain fields from model binding
         {
             /*
             List<string> errorsList = [];
@@ -39,7 +39,7 @@ namespace WebApplication2.Controllers
         }
 
         [Route("register2")]
-        public IActionResult Index2(PersonIValidateInterface personIValidateInterface)
+        public IActionResult Index2([FromBody] PersonIValidateInterface personIValidateInterface)
         {
             if (!ModelState.IsValid)
             {
